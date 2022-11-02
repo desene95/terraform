@@ -20,4 +20,4 @@ steps:
     azureSubscription: 'Pay-As-You-Go(2)(d1ac2c8c-6294-46bc-ae8c-4188669ccbbc)'
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
-    inlineScript: 'az login -u $(az_username) -p $(az_password)'
+    inlineScript: 'az login -u $(az_username) -p $(az_password) --tenant $(az_tenant)'
