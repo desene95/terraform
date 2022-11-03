@@ -30,6 +30,8 @@ steps:
     script: |
       # Write your commands here
       echo "this is my working directory: ${PWD}"
+      cd /Users/damianesene/terraform
+      ./setup_env.sh
       
       #change to hcl location
       cd $(hcl_location)
