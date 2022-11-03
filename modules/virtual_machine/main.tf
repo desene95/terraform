@@ -47,13 +47,13 @@ resource "azurerm_network_interface" "aznic" {
 }
 
 resource "random_password" "password" {
-  count   = 2
+  count   = 1
   length  = 8
   special = true
 }
 
 resource "random_string" "username" {
-  count            = 2
+  count            = 1
   length           = 8
   special          = false
   #override_special = "/$@"
@@ -86,18 +86,19 @@ resource "azurerm_key_vault" "this"{
 }
 
 resource "azurerm_key_vault_secret" "username" {
- # count = 2
-  name         = "USER-VM-SERVER-"
-for_each = resource.random_string.username
-  value        = each.key
+  count = 2
+  #for_each = resource.random_string.username
+  name         = "USER-VM-SERVER-${count.index}"
+  value        = resource.random_string.username[0].result
   key_vault_id = azurerm_key_vault.this.id
 }
 
 resource "azurerm_key_vault_secret" "password" {
-  #count = 2
+  count = 2
+  
+  #for_each = resource.random_password.password
   name         = "PASS-VM-SERVER-${count.index}"
-  for_each = resource.random_password.password
-  value        = each.key
+  value        = resource.random_password.password[0].result
   key_vault_id = azurerm_key_vault.this.id
 }
 ##################################################################
@@ -122,15 +123,15 @@ resource "azurerm_virtual_machine" "vmmain" {
     version   = "latest"
   }
   storage_os_disk {
-    name              = "myosdisk${count.index}"
+    name              = "myosdisk-${count.index}"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
   }
   os_profile {
     computer_name  = "hostname"
-    admin_username = random_string.username.result
-    admin_password = random_password.password.result
+    admin_username = random_string.username[0].result
+    admin_password = random_password.password[0].result
   }
   os_profile_linux_config {
     disable_password_authentication = false
