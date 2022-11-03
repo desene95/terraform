@@ -30,6 +30,10 @@ steps:
     script: |
       # Write your commands here
       echo "this is my working directory: ${PWD}"
+      
+      #change to hcl location
+      cd $(hcl_location)
+     
       #install terrgrunt
       wget https://github.com/gruntwork-io/terragrunt/releases/tag/v0.39.2/terragrunt_darwin_amd64
       #run terragrunt plan
