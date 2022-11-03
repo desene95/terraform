@@ -1,0 +1,41 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  name: Default
+  vmImage: ubuntu-latest
+
+steps:
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'Pay-As-You-Go(2)(d1ac2c8c-6294-46bc-ae8c-4188669ccbbc)'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az login --service-principal -u $(az_username) -p $(az_password) --tenant $(az_tenant)'
+# - task: installTerragrunt@0
+#   inputs:
+#     terragruntversion: '0.39.2'
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      echo "this is my working directory: ${PWD}"
+      
+      #change to hcl location
+      cd $(hcl_location)
+     
+      #install terrgrunt
+      wget https://github.com/gruntwork-io/terragrunt/releases/tag/v0.39.2/terragrunt_darwin_amd64
+      #run terragrunt plan
+      terragrunt plan
+    #workingDirectory: '/virtual_machine'
