@@ -21,14 +21,16 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: 'az login --service-principal -u $(az_username) -p $(az_password) --tenant $(az_tenant)'
-- task: installTerragrunt@0
-  inputs:
-    terragruntversion: '0.39.2'
+# - task: installTerragrunt@0
+#   inputs:
+#     terragruntversion: '0.39.2'
 - task: Bash@3
   inputs:
     targetType: 'inline'
     script: |
       # Write your commands here
-      
+      #install terrgrunt
+      wget https://github.com/gruntwork-io/terragrunt/releases/tag/v0.39.2/terragrunt_darwin_amd64
+      #run terragrunt plan
       terragrunt plan
     workingDirectory: '/virtual_machine'
