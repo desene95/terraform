@@ -34,4 +34,4 @@ steps:
       wget https://github.com/gruntwork-io/terragrunt/releases/tag/v0.39.2/terragrunt_darwin_amd64
       #run terragrunt plan
       terragrunt plan
-    workingDirectory: '/virtual_machine'
+    #workingDirectory: '/virtual_machine'
