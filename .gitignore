@@ -1,4 +1,4 @@
 *.terraform*
 *.terragrunt*
 *.tfstate
-terragrunt_darwin_amd64
+terragrunt_darwin_amd64*
