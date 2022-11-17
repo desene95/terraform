@@ -54,9 +54,7 @@ stages:
   displayName: 'Plan_Approval'
   jobs:
   - job: plan_approval
-    pool:
-      name: Default
-      vmImage: ubuntu-latest
+    pool: server
     steps:
     - task: ManualValidation@0
       inputs:
