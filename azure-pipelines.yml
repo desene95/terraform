@@ -43,7 +43,7 @@ steps:
     #workingDirectory: '/virtual_machine'
 
 - task: Bash@3
-  displayName: 'Terragrunt Apply
+  displayName: 'Terragrunt Apply'
   inputs:
     targetType: 'inline'
     script: |
