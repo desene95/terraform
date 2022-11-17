@@ -50,6 +50,44 @@ stages:
             #run terragrunt plan
             terragrunt plan
 
+- stage: Plan-Approval
+  displayName: 'Plan-Approval'
+  jobs:
+  - job: plan-approval
+    pool:
+      name: Default
+      vmImage: ubuntu-latest
+    steps:
+    - task: ManualValidation@0
+      inputs:
+        notifyUsers: 'esene789@gmail.com'
+        instructions: 'Approve Plan'
+      
+
+- stage: Apply
+  displayName: 'Terragrunt Apply'
+  jobs:
+  - job: apply
+    pool:
+      name: Default
+      vmImage: ubuntu-latest
+    steps:
+    - task:  Bash@3
+      displayName: TGA
+      inputs:
+        targetType: 'inline'
+        script: |
+            # Write your commands here
+            echo "this is my working directory: ${PWD}"
+            cd /Users/damianesene/terraform
+            source setup_env.sh
+
+            #change to hcl location
+            cd $(hcl_location)
+     
+            #run terragrunt plan
+            terragrunt apply --auto-approve         
+
 # - task: Bash@3
 #   displayName: 'Terragrunt plan'
 #   inputs:
