@@ -31,13 +31,13 @@ steps:
       # Write your commands here
       echo "this is my working directory: ${PWD}"
       cd /Users/damianesene/terraform
-      ./setup_env.sh
+      source setup_env.sh
       
       #change to hcl location
       cd $(hcl_location)
      
       #install terrgrunt
-      wget https://github.com/gruntwork-io/terragrunt/releases/tag/v0.39.2/terragrunt_darwin_amd64
+      #wget https://github.com/gruntwork-io/terragrunt/releases/tag/v0.39.2/terragrunt_darwin_amd64
       #run terragrunt plan
       terragrunt plan
     #workingDirectory: '/virtual_machine'

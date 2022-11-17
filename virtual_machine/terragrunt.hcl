@@ -1,3 +1,4 @@
+
 terraform {
   source = "..//modules/virtual_machine"
   extra_arguments "force_subscription" {
@@ -11,9 +12,9 @@ terraform {
       "taint",
       "untaint"
     ]
-   env_vars = {
-      ARM_SUBSCRIPTION_ID = "d1ac2c8c-6294-46bc-ae8c-4188669ccbbc"
-    }
+    env_vars = {
+       ARM_SUBSCRIPTION_ID = "d1ac2c8c-6294-46bc-ae8c-4188669ccbbc"
+     }
 }
 
 }
@@ -38,7 +39,7 @@ remote_state {
     if_exists = "overwrite"
   }
   config = {
-    tenant_id       = "a2091806-2bd5-424d-a1ec-8b44a0373dd1i"
+    tenant_id       = "a2091806-2bd5-424d-a1ec-8b44a0373dd1"
     subscription_id = "d1ac2c8c-6294-46bc-ae8c-4188669ccbbc"
 
     resource_group_name  = "practice-tfstate"
@@ -64,13 +65,16 @@ terraform {
   }
 }
 provider "azurerm" {
+  #  client_id = "b3ba4b4f-22cc-4283-ada3-b0126e9be570"
+  #  client_secret = "GI48Q~TV33P31bwxak35e~u9~lg.s~RiobaBja~r"
+  #  subscription_id = "d1ac2c8c-6294-46bc-ae8c-4188669ccbbc"
+  #  tenant_id = "a2091806-2bd5-424d-a1ec-8b44a0373dd1"
+
+    #version  = "2.2.0"
     # The "feature" block is required for AzureRM provider 2.x.
     # If you're using version 1.x, the "features" block is not allowed.
-    client_id = "b3ba4b4f-22cc-4283-ada3-b0126e9be570"
-    client_secret = "GI48Q~TV33P31bwxak35e~u9~lg.s~RiobaBja~r"
-    subscription_id = "d1ac2c8c-6294-46bc-ae8c-4188669ccbbc"
-    tenant_id = "a2091806-2bd5-424d-a1ec-8b44a0373dd1"
-    features {}
+    
+  features {}
 }
 
 EOF
