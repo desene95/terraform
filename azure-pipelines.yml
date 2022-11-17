@@ -41,3 +41,14 @@ steps:
       #run terragrunt plan
       terragrunt plan
     #workingDirectory: '/virtual_machine'
+
+- task: Bash@3
+  displayName: 'Terragrunt Apply
+  inputs:
+    targetType: 'inline'
+    script: |
+    #change to hcl location
+      cd $(hcl_location)
+    
+    #terragrunt apply
+    terragrunt apply
