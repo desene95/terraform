@@ -25,7 +25,7 @@ steps:
 #   inputs:
 #     terragruntversion: '0.39.2'
 - task: Source environment variables
-inputs:
+  inputs:
     targetType: 'inline'
     script: |
       # Write your commands here
@@ -40,7 +40,7 @@ inputs:
       
       #change to hcl location
       cd $(hcl_location)
-      
+
       #run terragrunt plan
       terragrunt plan
     #workingDirectory: '/virtual_machine'
