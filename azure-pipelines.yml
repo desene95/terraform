@@ -6,9 +6,9 @@
 trigger:
 - main
 
-pool:
-  name: Default
-  vmImage: ubuntu-latest
+# pool:
+#   name: Default
+#   vmImage: ubuntu-latest
 
 # steps:
 # - task: PublishBuildArtifacts@1
@@ -25,20 +25,20 @@ pool:
 #   inputs:
 #     terragruntversion: '0.39.2'
 
-- stages:
-    stage: Plan
-    displayName: 'Terragrunt plan'
-    jobs:
-    - job: :plan
-      pool:
-        name: Default
-        vmImage: ubuntu-latest
-      steps:
-      - task: Bash@3
-        displayName: "TGP"
-        inputs:
-          targetType: 'inline'
-          script: |
+stages:
+- stage: Plan
+  displayName: 'Terragrunt plan'
+  jobs:
+  - job: :plan
+    pool:
+      name: Default
+      vmImage: ubuntu-latest
+    steps:
+    - task: Bash@3
+      displayName: "TGP"
+      inputs:
+        targetType: 'inline'
+        script: |
             # Write your commands here
             echo "this is my working directory: ${PWD}"
             cd /Users/damianesene/terraform
