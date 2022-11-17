@@ -58,7 +58,7 @@ stages:
       name: Default
       vmImage: ubuntu-latest
     steps:
-    - task: ManualValidation@2
+    - task: ManualValidation@0
       inputs:
         notifyUsers: 'esene789@gmail.com'
         instructions: 'Approve Plan'
