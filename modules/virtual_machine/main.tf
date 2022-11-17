@@ -47,13 +47,13 @@ resource "azurerm_network_interface" "aznic" {
 }
 
 resource "random_password" "password" {
-  count   = 1
+  count   = 2
   length  = 8
   special = true
 }
 
 resource "random_string" "username" {
-  count            = 1
+  count            = 2
   length           = 8
   special          = false
   #override_special = "/$@"
