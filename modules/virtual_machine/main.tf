@@ -80,7 +80,8 @@ resource "azurerm_key_vault" "this"{
       "Get",
       "Delete",
       "Purge",
-      "Recover"
+      "Recover",
+      "List"
     ]
 }
 }
@@ -89,7 +90,7 @@ resource "azurerm_key_vault_secret" "username" {
   count = 2
   #for_each = resource.random_string.username
   name         = "USER-VM-SERVER-${count.index}"
-  value        = resource.random_string.username[0].result
+  value        = random_string.username[0].result
   key_vault_id = azurerm_key_vault.this.id
 }
 
@@ -98,7 +99,7 @@ resource "azurerm_key_vault_secret" "password" {
   
   #for_each = resource.random_password.password
   name         = "PASS-VM-SERVER-${count.index}"
-  value        = resource.random_password.password[0].result
+  value        = random_password.password[0].result
   key_vault_id = azurerm_key_vault.this.id
 }
 ##################################################################
