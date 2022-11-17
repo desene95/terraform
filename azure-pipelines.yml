@@ -48,7 +48,7 @@ steps:
     targetType: 'inline'
     script: |
     #change to hcl location
-      cd $(hcl_location)
+    cd $(hcl_location)
     
     #terragrunt apply
     terragrunt apply
