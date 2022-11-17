@@ -29,7 +29,7 @@ stages:
 - stage: Plan
   displayName: 'Terragrunt plan'
   jobs:
-  - job: :plan
+  - job: plan
     pool:
       name: Default
       vmImage: ubuntu-latest
