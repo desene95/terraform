@@ -50,15 +50,15 @@ stages:
             #run terragrunt plan
             terragrunt plan
 
-- stage: Plan-Approval
-  displayName: 'Plan-Approval'
+- stage: Plan_Approval
+  displayName: 'Plan_Approval'
   jobs:
-  - job: plan-approval
+  - job: plan_approval
     pool:
       name: Default
       vmImage: ubuntu-latest
     steps:
-    - task: ManualValidation@0
+    - task: ManualValidation@2
       inputs:
         notifyUsers: 'esene789@gmail.com'
         instructions: 'Approve Plan'
