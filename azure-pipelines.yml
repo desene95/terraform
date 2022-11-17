@@ -47,6 +47,10 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
+
+      cd /Users/damianesene/terraform
+      source setup_env.sh
+      
       #change to hcl location
       cd $(hcl_location)
     
