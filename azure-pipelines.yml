@@ -24,7 +24,9 @@ steps:
 # - task: installTerragrunt@0
 #   inputs:
 #     terragruntversion: '0.39.2'
-- task: Source environment variables
+
+- task: Bash@3
+  displayName: 'Source env variables'
   inputs:
     targetType: 'inline'
     script: |
@@ -32,15 +34,17 @@ steps:
       echo "this is my working directory: ${PWD}"
       cd /Users/damianesene/terraform
       source setup_env.sh
-
-- task: Terragrunt plan
+      
+- task: Bash@3
+  displayName: 'Terragrunt plan'
   inputs:
     targetType: 'inline'
     script: |
-      
       #change to hcl location
       cd $(hcl_location)
-
+     
+      #install terrgrunt
+      #wget https://github.com/gruntwork-io/terragrunt/releases/tag/v0.39.2/terragrunt_darwin_amd64
       #run terragrunt plan
       terragrunt plan
     #workingDirectory: '/virtual_machine'
