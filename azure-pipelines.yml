@@ -10,11 +10,11 @@ pool:
   name: Default
   vmImage: ubuntu-latest
 
-steps:
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: drop'
-  inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
+# steps:
+# - task: PublishBuildArtifacts@1
+#   displayName: 'Publish Artifact: drop'
+#   inputs:
+#     PathtoPublish: '$(build.artifactstagingdirectory)'
 # - task: AzureCLI@2
 #   inputs:
 #     azureSubscription: 'Pay-As-You-Go(2)(d1ac2c8c-6294-46bc-ae8c-4188669ccbbc)'
